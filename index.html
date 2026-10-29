@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Aashi ❤️ | Birthday Surprise</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --pink: #ff72c6;
+    --light-pink: #ffd1ec;
+    --purple: #b86bff;
+    --glass: rgba(255,255,255,.075);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff5fc;
+    font-family: 'DM Sans', Arial, sans-serif;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 15% 10%, #48105e 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 40%, #570c48 0%, transparent 42%),
+        linear-gradient(145deg, #10071c, #210a2d 50%, #10071c);
+}
+
+button {
+    font: inherit;
+}
+
+button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#stars, #confetti, #hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+#stars {
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px #ffb9ed;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .15; transform: scale(.7); }
+    50% { opacity: .95; transform: scale(1.5); }
+}
+
+#confetti {
+    z-index: 20;
+}
+
+#hearts {
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    12% { opacity: .65; }
+    100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+
+.music-button {
+    position: fixed;
+    z-index: 30;
+    top: 15px;
+    right: 15px;
+    border: 1px solid #ff9cdb70;
+    border-radius: 30px;
+    padding: 11px 15px;
+    background: #261130dd;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 18px #ff72c625;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: min(900px, calc(100% - 28px));
+    margin: 65px auto 30px;
+    padding: clamp(22px, 5vw, 48px);
+    border: 1px solid #ffffff1b;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ffffff0c, #ffffff04);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 80px #00000035, 0 0 45px #e54ba510;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #ff9cdb45;
+    border-radius: 30px;
+    color: #ffc2e8;
+    background: #ff72c610;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+h1, h2, .letter-title {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 66px);
+    line-height: 1.2;
+    color: #ffe0f3;
+    text-shadow: 0 0 30px #ff72c650;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ffb5e1, #ffffff, #d5a5ff, #ffb5e1);
+    background-size: 250% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 250% center; }
+}
+
+.subtitle {
+    max-width: 540px;
+    margin: 18px auto;
+    color: #e3c9e5;
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.hero-heart {
+    display: block;
+    font-size: 48px;
+    margin: 18px 0;
+    filter: drop-shadow(0 0 15px #ff72c680);
+    animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.12); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+}
+
+.primary-button, .secondary-button {
+    display: inline-block;
+    border: 0;
+    border-radius: 40px;
+    padding: 15px 24px;
+    margin: 10px 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.primary-button {
+    background: linear-gradient(100deg, #ff4fae, #bb5cff);
+    box-shadow: 0 8px 30px #e348a545;
+}
+
+.secondary-button {
+    background: #ffffff0b;
+    border: 1px solid #ff9cdb55;
+}
+
+.primary-button:hover, .secondary-button:hover {
+    transform: translateY(-3px) scale(1.025);
+    box-shadow: 0 10px 35px #ff72c645;
+}
+
+.intro-line {
+    color: #c9a8ce;
+    font-size: 12px;
+    margin-top: 14px;
+}
+
+#surprise {
+    display: none;
+    animation: reveal 1s ease both;
+}
+
+#surprise.show {
+    display: block;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 38px 0;
+    color: #ffb6e2;
+    font-size: 13px;
+}
+
+.divider::before, .divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, #ff8edc80);
+}
+
+.divider::after {
+    transform: rotate(180deg);
+}
+
+.section-heading {
+    margin: 35px 0 20px;
+}
+
+.section-heading .eyebrow {
+    color: #ff9bd8;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #ffd5ef;
+    font-size: clamp(25px, 5vw, 36px);
+    margin-bottom: 12px;
+}
+
+.section-description {
+    color: #cdb7d4;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.message-card {
+    margin: 24px auto;
+    padding: 25px;
+    max-width: 690px;
+    text-align: left;
+    border: 1px solid #ff9cdb30;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ff72c60c, #b86bff0b);
+}
+
+.message-card p {
+    font-size: 15px;
+    line-height: 2;
+    color: #f2dff0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 25px 0;
+}
+
+.photo-card {
+    position: relative;
+    padding: 7px;
+    overflow: hidden;
+    border: 1px solid #ff9cdb50;
+    border-radius: 20px;
+    background: linear-gradient(140deg, #ff72c62b, #b86bff20);
+    box-shadow: 0 8px 25px #00000025;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px) scale(1.015);
+    box-shadow: 0 12px 35px #ff72c630;
+}
+
+.gallery img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #13091b;
+    border-radius: 14px;
+}
+
+.single-photo {
+    width: 100%;
+    max-width: 550px;
+    margin: 24px auto;
+    padding: 8px;
+    border-radius: 23px;
+    border: 1px solid #ff9cdb60;
+    background: linear-gradient(135deg, #ff72c630, #b86bff30);
+    box-shadow: 0 0 35px #ff72c615;
+}
+
+.single-photo img {
+    display: block;
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 16px;
+    background: #13091b;
+}
+
+.photo-caption {
+    padding: 12px 4px 6px;
+    font-size: 12px;
+    color: #ffd1ec;
+}
+
+.video-box {
+    max-width: 720px;
+    margin: 25px auto;
+    padding: 9px;
+    border: 1px solid #ff9cdb50;
+    border-radius: 23px;
+    background: #ffffff08;
+    box-shadow: 0 0 35px #ff72c612;
+}
+
+video {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    border-radius: 16px;
+    background: black;
+}
+
+.letter-card {
+    position: relative;
+    margin: 25px auto;
+    padding: 28px 22px;
+    max-width: 680px;
+    border: 1px solid #ffb3e455;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #fff3fc12, #ff72c609);
+    text-align: left;
+}
+
+.letter-card::before {
+    content: "♡";
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    color: #ff91d2;
+    font-size: 34px;
+}
+
+.letter-title {
+    color: #ffbce5;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.letter-card p {
+    color: #f1dff1;
+    font-size: 14px;
+    line-height: 2;
+    margin: 12px 0;
+}
+
+#secretLetter {
+    display: none;
+    animation: reveal .8s ease both;
+}
+
+#secretLetter.open {
+    display: block;
+}
+
+.signature {
+    margin-top: 20px;
+    color: #ffbce5;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 23px;
+    line-height: 1.7;
+}
+
+.final-note {
+    margin-top: 35px;
+    padding: 25px 12px;
+    border-top: 1px solid #ff9cdb30;
+}
+
+.final-note .big-heart {
+    font-size: 35px;
+}
+
+.final-note p {
+    margin-top: 12px;
+    color: #d9bada;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    padding: 0 15px 25px;
+    color: #a98caf;
+    font-size: 11px;
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: calc(100% - 20px);
+        margin-top: 70px;
+        padding: 25px 15px;
+        border-radius: 23px;
+    }
+
+    .gallery {
+        gap: 10px;
+    }
+
+    .gallery img {
+        height: 210px;
+    }
+
+    .photo-card {
+        padding: 5px;
+        border-radius: 15px;
+    }
+
+    .gallery img {
+        border-radius: 11px;
+    }
+
+    .message-card, .letter-card {
+        padding: 20px 16px;
+    }
+
+    .music-button {
+        top: 10px;
+        right: 10px;
+        padding: 10px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars" aria-hidden="true"></div>
+<div id="hearts" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<audio id="birthdayMusic" loop preload="none">
+    <source src="Birthday2.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicBtn" type="button">
+    ♫ MUSIC OFF
+</button>
+
+<main class="container">
+
+    <div class="badge">✦ A LITTLE SURPRISE MADE WITH LOVE ✦</div>
+
+    <span class="hero-heart" aria-hidden="true">💗</span>
+
+    <h1>Happy Birthday,<br><span class="gradient-text">Aashi!</span> 🎂</h1>
+
+    <p class="subtitle">
+        To someone who makes life a little brighter, laughter a little louder,
+        and memories a little more beautiful. Today, this little corner of the
+        internet is all yours. 💖
+    </p>
+
+    <button class="primary-button" id="openBtn" type="button">
+        Open Your Surprise 🎁
+    </button>
+
+    <p class="intro-line">Made with love, just for you ✨</p>
+
+    <div id="surprise">
+
+        <div class="divider">A DAY AS SPECIAL AS YOU</div>
+
+        <section>
+            <div class="section-heading">
+                <p class="eyebrow">✦ A LITTLE MESSAGE ✦</p>
+                <h2>You're One of a Kind 💝</h2>
+                <p class="section-description">
+                    Some people make the world more beautiful just by being in it.
+                </p>
+            </div>
+
+            <div class="message-card">
+                <p>
+                    Dear Aashi, ❤️<br><br>
+                    Happy Birthday to you! 🥳 Today is all about celebrating
+                    the wonderful person you are. May your days be filled with
+                    genuine smiles, beautiful surprises, endless happiness,
+                    and dreams that come true one by one.<br><br>
+                    Never stop being yourself, never stop smiling, and always
+                    remember how special you are. You deserve so many beautiful
+                    things in life. May this new year bring you more reasons to
+                    laugh, more moments to treasure, and more adventures to enjoy.
+                    🌸💖
+                </p>
+            </div>
+        </section>
+
+        <div class="divider">LITTLE MOMENTS, BIG MEMORIES</div>
+
+        <section>
+            <div class="section-heading">
+                <p class="eyebrow">✦ OUR MEMORY LANE ✦</p>
+                <h2>Beautiful Memories 📸</h2>
+                <p class="section-description">
+                    A few precious moments, saved forever in pictures. 💕
+                </p>
+            </div>
+
+            <div class="gallery">
+
+                <div class="photo-card">
+                    <img src="Aashi%201.jpeg" alt="Aashi memory 1" loading="lazy">
+                    <div class="photo-caption">A moment to remember ♡</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Aashi%202.jpeg" alt="Aashi memory 2" loading="lazy">
+                    <div class="photo-caption">Beautiful as always ♡</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Aashi%203.jpeg" alt="Aashi memory 3" loading="lazy">
+                    <div class="photo-caption">Little happy moments ♡</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Aashi4.jpeg" alt="Aashi memory 4" loading="lazy">
+                    <div class="photo-caption">A memory full of love ♡</div>
+                </div>
+
+            </div>
+
+            <div class="single-photo">
+                <img
+                    src="WhatsApp%20Image%202026-10-26%20at%205.49.08%20PM.jpeg"
+                    alt="A special memory of Aashi"
+                    loading="lazy">
+                <div class="photo-caption">One more beautiful memory, just for you 💗</div>
+            </div>
+        </section>
+
+        <div class="divider">A LITTLE GIFT FROM THE HEART</div>
+
+        <section>
+            <div class="section-heading">
+                <p class="eyebrow">✦ MADE JUST FOR YOU ✦</p>
+                <h2>A Special Video 🎬</h2>
+                <p class="section-description">
+                    Press play and enjoy these memories. Every moment has a little story to tell. 💕
+                </p>
+            </div>
+
+            <div class="video-box">
+                <video controls playsinline preload="metadata">
+                    <source
+                        src="https://res.cloudinary.com/kgdqdy53/video/upload/v1793209863/Happy_birthday.mp4"
+                        type="video/mp4">
+                    Sorry, your browser does not support video playback.
+                </video>
+            </div>
+        </section>
+
+        <div class="divider">ONE LAST LITTLE SURPRISE</div>
+
+        <section>
+            <div class="section-heading">
+                <p class="eyebrow">✦ SOMETHING FROM THE HEART ✦</p>
+                <h2>A Secret Letter 💌</h2>
+                <p class="section-description">
+                    There's one more thing I want you to read. Open when you're ready. 💖
+                </p>
+            </div>
+
+            <button class="primary-button" id="letterBtn" type="button"
+                    aria-expanded="false" aria-controls="secretLetter">
+                Open Your Secret Letter 💌
+            </button>
+
+            <div id="secretLetter">
+                <div class="letter-card">
+                    <div class="letter-title">Dear Aashi, 🌷</div>
+
+                    <p>
+                        Birthdays are a reminder of how beautiful it is to have
+                        people who make our lives special. And today, I just want
+                        to wish you a world full of happiness.
+                    </p>
+
+                    <p>
+                        I hope you always find a reason to smile, courage when
+                        things feel difficult, and people who appreciate you for
+                        exactly who you are. May all your little wishes and big
+                        dreams find their way to you.
+                    </p>
+
+                    <p>
+                        Keep being your wonderful self. Keep laughing, keep
+                        growing, and keep making beautiful memories. And whenever
+                        you look back at this little website, I hope it brings
+                        a smile to your face. ❤️
+                    </p>
+
+                    <p>
+                        This is your day, your moment, and your little reminder
+                        that you deserve all the love and happiness in the world.
+                        Happy Birthday once again, Aashi! 🎂✨
+                    </p>
+
+                    <div class="signature">
+                        Lots of love,<br>
+                        Your Brother, Nikunj ❤️
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="final-note">
+            <div class="big-heart">💖 🎂 💖</div>
+            <h2>Keep Smiling, Keep Shining!</h2>
+            <p>
+                May your new year be full of love, laughter, little miracles,
+                and memories worth keeping forever.<br>
+                Happy Birthday, Aashi! 🌸
+            </p>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    Crafted with ♡ by Nikunj, especially for Aashi.
+</footer>
+
+<script>
+const surprise = document.getElementById("surprise");
+const openBtn = document.getElementById("openBtn");
+const music = document.getElementById("birthdayMusic");
+const musicBtn = document.getElementById("musicBtn");
+const letterBtn = document.getElementById("letterBtn");
+const secretLetter = document.getElementById("secretLetter");
+
+let musicStarted = false;
+
+/* Starry background */
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 75; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    star.style.animationDuration = (2 + Math.random() * 3) + "s";
+    stars.appendChild(star);
+}
+
+/* Floating hearts */
+const hearts = document.getElementById("hearts");
+
+function createHeart() {
+    const heart = document.createElement("span");
+    heart.className = "heart";
+    heart.textContent = ["💗", "💖", "💕", "✨"][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 17) + "px";
+    heart.style.animationDuration = (7 + Math.random() * 5) + "s";
+
+    hearts.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 12500);
+}
+
+setInterval(createHeart, 800);
+
+/* Open birthday surprise */
+openBtn.addEventListener("click", () => {
+    surprise.classList.add("show");
+    openBtn.textContent = "Your Surprise Is Opened 💖";
+    openBtn.disabled = true;
+    openBtn.style.opacity = ".8";
+
+    launchConfetti();
+
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    /* Try to start music after a user click.
+       If the browser blocks it, the music button can still be used. */
+    if (!musicStarted) {
+        music.play().then(() => {
+            musicStarted = true;
+            updateMusicButton();
+        }).catch(() => {
+            updateMusicButton();
+        });
+    }
+});
+
+/* Background music */
+function updateMusicButton() {
+    musicBtn.textContent = music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
+}
+
+musicBtn.addEventListener("click", async () => {
+    if (music.paused) {
+        try {
+            await music.play();
+            musicStarted = true;
+        } catch (error) {
+            alert("Please check that birthday.mp3 is in the same folder as index.html.");
+        }
+    } else {
+        music.pause();
+    }
+
+    updateMusicButton();
+});
+
+music.addEventListener("play", updateMusicButton);
+music.addEventListener("pause", updateMusicButton);
+
+/* Secret letter */
+letterBtn.addEventListener("click", () => {
+    const isOpen = secretLetter.classList.toggle("open");
+
+    letterBtn.textContent = isOpen
+        ? "Close Your Secret Letter 💗"
+        : "Open Your Secret Letter 💌";
+
+    letterBtn.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+        secretLetter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        launchConfetti();
+    }
+});
+
+/* Confetti animation */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let animationFrame = null;
+
+function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function launchConfetti() {
+    const colors = ["#ff72c6", "#ffd1ec", "#c28aff", "#ffffff", "#ffcf70"];
+
+    for (let i = 0; i < 130; i++) {
+        particles.push({
+            x: Math.random() * window.innerWidth,
+            y: -20 - Math.random() * window.innerHeight * 0.4,
+            size: 4 + Math.random() * 6,
+            speedX: (Math.random() - 0.5) * 4,
+            speedY: 2 + Math.random() * 5,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 10,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: 150 + Math.random() * 70
+        });
+    }
+
+    if (!animationFrame) {
+        animateConfetti();
+    }
+}
+
+function animateConfetti() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    particles = particles.filter(p => p.life > 0 && p.y < window.innerHeight + 30);
+
+    for (const p of particles) {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.rotation += p.rotationSpeed;
+        p.speedY += 0.025;
+        p.life--;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+        ctx.restore();
+    }
+
+    if (particles.length > 0) {
+        animationFrame = requestAnimationFrame(animateConfetti);
+    } else {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        animationFrame = null;
+    }
+}
+</script>
+
+</body>
+</html>
+```
