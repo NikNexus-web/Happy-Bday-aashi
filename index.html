@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -51,6 +51,259 @@ button:focus-visible {
 button, a {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* =================================
+   MIDNIGHT COUNTDOWN DESIGN
+================================= */
+
+#midnightCountdown {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+    color: white;
+    background:
+        radial-gradient(ellipse at 20% 20%, #58136d 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 75%, #710e58 0%, transparent 45%),
+        linear-gradient(145deg, #0c0616, #200927 50%, #100719);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+#midnightCountdown.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.countdown-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.countdown-star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 12px #ffb5e1;
+    animation: countdownTwinkle 3s infinite ease-in-out;
+}
+
+@keyframes countdownTwinkle {
+    0%, 100% {
+        opacity: .2;
+        transform: scale(.6);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.6);
+    }
+}
+
+.countdown-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #e54ba5;
+    filter: blur(120px);
+    opacity: .18;
+    animation: glowPulse 4s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        transform: scale(.8);
+        opacity: .12;
+    }
+    to {
+        transform: scale(1.3);
+        opacity: .28;
+    }
+}
+
+.countdown-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    padding: 35px 22px;
+    border: 1px solid #ffffff20;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ffffff12, #ffffff05);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 80px #00000045, 0 0 50px #ff72c620;
+    animation: countdownAppear 1.2s ease both;
+}
+
+@keyframes countdownAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.countdown-moon {
+    font-size: 65px;
+    margin-bottom: 18px;
+    display: inline-block;
+    filter: drop-shadow(0 0 20px #ffb5e1);
+    animation: moonFloat 3s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(5deg);
+    }
+}
+
+.countdown-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 22px;
+    border: 1px solid #ff9cdb55;
+    border-radius: 30px;
+    background: #ff72c615;
+    color: #ffc2e8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.countdown-content h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 6vw, 47px);
+    line-height: 1.3;
+    color: #ffe0f3;
+    text-shadow: 0 0 25px #ff72c650;
+    margin-bottom: 15px;
+}
+
+.countdown-highlight {
+    background: linear-gradient(90deg, #ffb5e1, #ffffff, #d5a5ff);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.countdown-description {
+    max-width: 440px;
+    margin: 0 auto 30px;
+    color: #e3c9e5;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.countdown-timer div {
+    min-width: 100px;
+    padding: 20px 12px;
+    border: 1px solid #ff9cdb50;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #ffffff15, #ffffff08);
+    box-shadow: 0 5px 25px #00000020;
+    backdrop-filter: blur(10px);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.countdown-timer div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px #ff72c630;
+}
+
+.countdown-timer span {
+    display: block;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffb5e1;
+    text-shadow: 0 0 15px #ff72c650;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-timer small {
+    display: block;
+    margin-top: 8px;
+    color: #ffd1ec;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.countdown-divider {
+    width: 70%;
+    height: 1px;
+    margin: 30px auto 20px;
+    background: linear-gradient(90deg, transparent, #ff9cdb90, transparent);
+}
+
+.countdown-footer {
+    color: #ffb5e1;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.countdown-footer span {
+    display: block;
+    margin-top: 7px;
+    color: #c9a8ce;
+    font-size: 11px;
+}
+
+@media(max-width: 480px) {
+    .countdown-content {
+        padding: 30px 14px;
+        border-radius: 23px;
+    }
+
+    .countdown-moon {
+        font-size: 52px;
+    }
+
+    .countdown-timer {
+        gap: 8px;
+    }
+
+    .countdown-timer div {
+        min-width: 68px;
+        padding: 14px 8px;
+        border-radius: 13px;
+    }
+
+    .countdown-timer span {
+        font-size: 27px;
+    }
+
+    .countdown-timer small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+}
+
+/* =================================
+   ORIGINAL WEBSITE CSS
+================================= */
 
 #stars, #confetti, #hearts {
     position: fixed;
@@ -495,9 +748,76 @@ footer {
     }
 }
 </style>
+
 </head>
 
 <body>
+
+<!-- MIDNIGHT COUNTDOWN SCREEN -->
+
+<div id="midnightCountdown">
+
+```
+<div class="countdown-stars" id="countdownStars"></div>
+<div class="countdown-glow"></div>
+
+<div class="countdown-content">
+
+    <div class="countdown-moon">🌙</div>
+
+    <div class="countdown-badge">
+        ✦ A SPECIAL MOMENT IS COMING ✦
+    </div>
+
+    <h2>
+        The Magic Begins<br>
+        <span class="countdown-highlight">At Midnight ✨</span>
+    </h2>
+
+    <p class="countdown-description">
+        Someone very special deserves a beautiful surprise.
+        Aashi, your special moment is almost here! ❤️
+        <br>
+        Just a little more waiting...
+    </p>
+
+    <div class="countdown-timer">
+
+        <div>
+            <span id="cdDays">00</span>
+            <small>DAYS</small>
+        </div>
+
+        <div>
+            <span id="cdHours">00</span>
+            <small>HOURS</small>
+        </div>
+
+        <div>
+            <span id="cdMinutes">00</span>
+            <small>MINUTES</small>
+        </div>
+
+        <div>
+            <span id="cdSeconds">00</span>
+            <small>SECONDS</small>
+        </div>
+
+    </div>
+
+    <div class="countdown-divider"></div>
+
+    <div class="countdown-footer">
+        Made with ❤️ by Nikunj, just for Aashi.
+        <span>Some surprises are worth waiting for... 💗</span>
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- COUNTDOWN SCREEN END -->
 
 <div id="stars" aria-hidden="true"></div>
 <div id="hearts" aria-hidden="true"></div>
@@ -513,183 +833,185 @@ footer {
 
 <main class="container">
 
-    <div class="badge">✦ A LITTLE SURPRISE MADE WITH LOVE ✦</div>
+```
+<div class="badge">✦ A LITTLE SURPRISE MADE WITH LOVE ✦</div>
 
-    <span class="hero-heart" aria-hidden="true">💗</span>
+<span class="hero-heart" aria-hidden="true">💗</span>
 
-    <h1>Happy Birthday,<br><span class="gradient-text">Aashi!</span> 🎂</h1>
+<h1>Happy Birthday,<br><span class="gradient-text">Aashi!</span> 🎂</h1>
 
-    <p class="subtitle">
-        To someone who makes life a little brighter, laughter a little louder,
-        and memories a little more beautiful. Today, this little corner of the
-        internet is all yours. 💖
-    </p>
+<p class="subtitle">
+    To someone who makes life a little brighter, laughter a little louder,
+    and memories a little more beautiful. Today, this little corner of the
+    internet is all yours. 💖
+</p>
 
-    <button class="primary-button" id="openBtn" type="button">
-        Open Your Surprise 🎁
-    </button>
+<button class="primary-button" id="openBtn" type="button">
+    Open Your Surprise 🎁
+</button>
 
-    <p class="intro-line">Made with love, just for you ✨</p>
+<p class="intro-line">Made with love, just for you ✨</p>
 
-    <div id="surprise">
+<div id="surprise">
 
-        <div class="divider">A DAY AS SPECIAL AS YOU</div>
+    <div class="divider">A DAY AS SPECIAL AS YOU</div>
 
-        <section>
-            <div class="section-heading">
-                <p class="eyebrow">✦ A LITTLE MESSAGE ✦</p>
-                <h2>You're One of a Kind 💝</h2>
-                <p class="section-description">
-                    Some people make the world more beautiful just by being in it.
-                </p>
-            </div>
-
-            <div class="message-card">
-                <p>
-                    Dear Aashi, ❤️<br><br>
-                    Happy Birthday to you! 🥳 Today is all about celebrating
-                    the wonderful person you are. May your days be filled with
-                    genuine smiles, beautiful surprises, endless happiness,
-                    and dreams that come true one by one.<br><br>
-                    Never stop being yourself, never stop smiling, and always
-                    remember how special you are. You deserve so many beautiful
-                    things in life. May this new year bring you more reasons to
-                    laugh, more moments to treasure, and more adventures to enjoy.
-                    🌸💖
-                </p>
-            </div>
-        </section>
-
-        <div class="divider">LITTLE MOMENTS, BIG MEMORIES</div>
-
-        <section>
-            <div class="section-heading">
-                <p class="eyebrow">✦ OUR MEMORY LANE ✦</p>
-                <h2>Beautiful Memories 📸</h2>
-                <p class="section-description">
-                    A few precious moments, saved forever in pictures. 💕
-                </p>
-            </div>
-
-            <div class="gallery">
-
-                <div class="photo-card">
-                    <img src="Aashi%201.jpeg" alt="Aashi memory 1" loading="lazy">
-                    <div class="photo-caption">A moment to remember ♡</div>
-                </div>
-
-                <div class="photo-card">
-                    <img src="Aashi%202.jpeg" alt="Aashi memory 2" loading="lazy">
-                    <div class="photo-caption">Beautiful as always ♡</div>
-                </div>
-
-                <div class="photo-card">
-                    <img src="Aashi%203.jpeg" alt="Aashi memory 3" loading="lazy">
-                    <div class="photo-caption">Little happy moments ♡</div>
-                </div>
-
-                <div class="photo-card">
-                    <img src="Aashi4.jpeg" alt="Aashi memory 4" loading="lazy">
-                    <div class="photo-caption">A memory full of love ♡</div>
-                </div>
-
-            </div>
-
-            <div class="single-photo">
-                <img
-                    src="WhatsApp%20Image%202026-10-26%20at%205.49.08%20PM.jpeg"
-                    alt="A special memory of Aashi"
-                    loading="lazy">
-                <div class="photo-caption">One more beautiful memory, just for you 💗</div>
-            </div>
-        </section>
-
-        <div class="divider">A LITTLE GIFT FROM THE HEART</div>
-
-        <section>
-            <div class="section-heading">
-                <p class="eyebrow">✦ MADE JUST FOR YOU ✦</p>
-                <h2>A Special Video 🎬</h2>
-                <p class="section-description">
-                    Press play and enjoy these memories. Every moment has a little story to tell. 💕
-                </p>
-            </div>
-
-            <div class="video-box">
-                <video controls playsinline preload="metadata">
-                    <source
-                        src="https://res.cloudinary.com/kgdqdy53/video/upload/v1793209863/Happy_birthday.mp4"
-                        type="video/mp4">
-                    Sorry, your browser does not support video playback.
-                </video>
-            </div>
-        </section>
-
-        <div class="divider">ONE LAST LITTLE SURPRISE</div>
-
-        <section>
-            <div class="section-heading">
-                <p class="eyebrow">✦ SOMETHING FROM THE HEART ✦</p>
-                <h2>A Secret Letter 💌</h2>
-                <p class="section-description">
-                    There's one more thing I want you to read. Open when you're ready. 💖
-                </p>
-            </div>
-
-            <button class="primary-button" id="letterBtn" type="button"
-                    aria-expanded="false" aria-controls="secretLetter">
-                Open Your Secret Letter 💌
-            </button>
-
-            <div id="secretLetter">
-                <div class="letter-card">
-                    <div class="letter-title">Dear Aashi, 🌷</div>
-
-                    <p>
-                        Birthdays are a reminder of how beautiful it is to have
-                        people who make our lives special. And today, I just want
-                        to wish you a world full of happiness.
-                    </p>
-
-                    <p>
-                        I hope you always find a reason to smile, courage when
-                        things feel difficult, and people who appreciate you for
-                        exactly who you are. May all your little wishes and big
-                        dreams find their way to you.
-                    </p>
-
-                    <p>
-                        Keep being your wonderful self. Keep laughing, keep
-                        growing, and keep making beautiful memories. And whenever
-                        you look back at this little website, I hope it brings
-                        a smile to your face. ❤️
-                    </p>
-
-                    <p>
-                        This is your day, your moment, and your little reminder
-                        that you deserve all the love and happiness in the world.
-                        Happy Birthday once again, Aashi! 🎂✨
-                    </p>
-
-                    <div class="signature">
-                        Lots of love,<br>
-                        Your Brother, Nikunj ❤️
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="final-note">
-            <div class="big-heart">💖 🎂 💖</div>
-            <h2>Keep Smiling, Keep Shining!</h2>
-            <p>
-                May your new year be full of love, laughter, little miracles,
-                and memories worth keeping forever.<br>
-                Happy Birthday, Aashi! 🌸
+    <section>
+        <div class="section-heading">
+            <p class="eyebrow">✦ A LITTLE MESSAGE ✦</p>
+            <h2>You're One of a Kind 💝</h2>
+            <p class="section-description">
+                Some people make the world more beautiful just by being in it.
             </p>
         </div>
 
+        <div class="message-card">
+            <p>
+                Dear Aashi, ❤️<br><br>
+                Happy Birthday to you! 🥳 Today is all about celebrating
+                the wonderful person you are. May your days be filled with
+                genuine smiles, beautiful surprises, endless happiness,
+                and dreams that come true one by one.<br><br>
+                Never stop being yourself, never stop smiling, and always
+                remember how special you are. You deserve so many beautiful
+                things in life. May this new year bring you more reasons to
+                laugh, more moments to treasure, and more adventures to enjoy.
+                🌸💖
+            </p>
+        </div>
+    </section>
+
+    <div class="divider">LITTLE MOMENTS, BIG MEMORIES</div>
+
+    <section>
+        <div class="section-heading">
+            <p class="eyebrow">✦ OUR MEMORY LANE ✦</p>
+            <h2>Beautiful Memories 📸</h2>
+            <p class="section-description">
+                A few precious moments, saved forever in pictures. 💕
+            </p>
+        </div>
+
+        <div class="gallery">
+
+            <div class="photo-card">
+                <img src="Aashi%201.jpeg" alt="Aashi memory 1" loading="lazy">
+                <div class="photo-caption">A moment to remember ♡</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="Aashi%202.jpeg" alt="Aashi memory 2" loading="lazy">
+                <div class="photo-caption">Beautiful as always ♡</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="Aashi%203.jpeg" alt="Aashi memory 3" loading="lazy">
+                <div class="photo-caption">Little happy moments ♡</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="Aashi4.jpeg" alt="Aashi memory 4" loading="lazy">
+                <div class="photo-caption">A memory full of love ♡</div>
+            </div>
+
+        </div>
+
+        <div class="single-photo">
+            <img
+                src="WhatsApp%20Image%202026-10-26%20at%205.49.08%20PM.jpeg"
+                alt="A special memory of Aashi"
+                loading="lazy">
+            <div class="photo-caption">One more beautiful memory, just for you 💗</div>
+        </div>
+    </section>
+
+    <div class="divider">A LITTLE GIFT FROM THE HEART</div>
+
+    <section>
+        <div class="section-heading">
+            <p class="eyebrow">✦ MADE JUST FOR YOU ✦</p>
+            <h2>A Special Video 🎬</h2>
+            <p class="section-description">
+                Press play and enjoy these memories. Every moment has a little story to tell. 💕
+            </p>
+        </div>
+
+        <div class="video-box">
+            <video controls playsinline preload="metadata">
+                <source
+                    src="https://res.cloudinary.com/kgdqdy53/video/upload/v1793209863/Happy_birthday.mp4"
+                    type="video/mp4">
+                Sorry, your browser does not support video playback.
+            </video>
+        </div>
+    </section>
+
+    <div class="divider">ONE LAST LITTLE SURPRISE</div>
+
+    <section>
+        <div class="section-heading">
+            <p class="eyebrow">✦ SOMETHING FROM THE HEART ✦</p>
+            <h2>A Secret Letter 💌</h2>
+            <p class="section-description">
+                There's one more thing I want you to read. Open when you're ready. 💖
+            </p>
+        </div>
+
+        <button class="primary-button" id="letterBtn" type="button"
+                aria-expanded="false" aria-controls="secretLetter">
+            Open Your Secret Letter 💌
+        </button>
+
+        <div id="secretLetter">
+            <div class="letter-card">
+                <div class="letter-title">Dear Aashi, 🌷</div>
+
+                <p>
+                    Birthdays are a reminder of how beautiful it is to have
+                    people who make our lives special. And today, I just want
+                    to wish you a world full of happiness.
+                </p>
+
+                <p>
+                    I hope you always find a reason to smile, courage when
+                    things feel difficult, and people who appreciate you for
+                    exactly who you are. May all your little wishes and big
+                    dreams find their way to you.
+                </p>
+
+                <p>
+                    Keep being your wonderful self. Keep laughing, keep
+                    growing, and keep making beautiful memories. And whenever
+                    you look back at this little website, I hope it brings
+                    a smile to your face. ❤️
+                </p>
+
+                <p>
+                    This is your day, your moment, and your little reminder
+                    that you deserve all the love and happiness in the world.
+                    Happy Birthday once again, Aashi! 🎂✨
+                </p>
+
+                <div class="signature">
+                    Lots of love,<br>
+                    Your Brother, Nikunj ❤️
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="final-note">
+        <div class="big-heart">💖 🎂 💖</div>
+        <h2>Keep Smiling, Keep Shining!</h2>
+        <p>
+            May your new year be full of love, laughter, little miracles,
+            and memories worth keeping forever.<br>
+            Happy Birthday, Aashi! 🌸
+        </p>
     </div>
+
+</div>
+```
 
 </main>
 
@@ -698,6 +1020,103 @@ footer {
 </footer>
 
 <script>
+
+/* =================================
+   MIDNIGHT COUNTDOWN SYSTEM
+================================= */
+
+// Target: 31 October 2026, 12:00 AM IST
+const midnightTarget = new Date(
+    "2026-10-31T00:00:00+05:30"
+).getTime();
+
+const countdownOverlay = document.getElementById("midnightCountdown");
+
+let countdownInterval;
+
+function updateMidnightCountdown() {
+
+    const currentTime = Date.now();
+    const difference = midnightTarget - currentTime;
+
+    // When midnight arrives, hide countdown
+    if (difference <= 0) {
+
+        clearInterval(countdownInterval);
+
+        countdownOverlay.classList.add("hide");
+
+        document.body.style.overflow = "auto";
+
+        setTimeout(() => {
+            countdownOverlay.style.display = "none";
+        }, 1500);
+
+        return;
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+    document.getElementById("cdDays").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("cdHours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("cdMinutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("cdSeconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+// Countdown stars
+const countdownStars = document.getElementById("countdownStars");
+
+for (let i = 0; i < 65; i++) {
+
+    const star = document.createElement("span");
+
+    star.className = "countdown-star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay = Math.random() * 4 + "s";
+    star.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+    countdownStars.appendChild(star);
+}
+
+// Lock scrolling while countdown is visible
+document.body.style.overflow = "hidden";
+
+updateMidnightCountdown();
+
+countdownInterval = setInterval(
+    updateMidnightCountdown,
+    1000
+);
+
+
+/* =================================
+   ORIGINAL WEBSITE JAVASCRIPT
+================================= */
+
 const surprise = document.getElementById("surprise");
 const openBtn = document.getElementById("openBtn");
 const music = document.getElementById("birthdayMusic");
@@ -708,25 +1127,36 @@ const secretLetter = document.getElementById("secretLetter");
 let musicStarted = false;
 
 /* Starry background */
+
 const stars = document.getElementById("stars");
 
 for (let i = 0; i < 75; i++) {
+
     const star = document.createElement("span");
+
     star.className = "star";
     star.style.left = Math.random() * 100 + "%";
     star.style.top = Math.random() * 100 + "%";
     star.style.animationDelay = Math.random() * 3 + "s";
     star.style.animationDuration = (2 + Math.random() * 3) + "s";
+
     stars.appendChild(star);
 }
 
 /* Floating hearts */
+
 const hearts = document.getElementById("hearts");
 
 function createHeart() {
+
     const heart = document.createElement("span");
+
     heart.className = "heart";
-    heart.textContent = ["💗", "💖", "💕", "✨"][Math.floor(Math.random() * 4)];
+
+    heart.textContent = ["💗", "💖", "💕", "✨"][
+        Math.floor(Math.random() * 4)
+    ];
+
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = (14 + Math.random() * 17) + "px";
     heart.style.animationDuration = (7 + Math.random() * 5) + "s";
@@ -739,8 +1169,11 @@ function createHeart() {
 setInterval(createHeart, 800);
 
 /* Open birthday surprise */
+
 openBtn.addEventListener("click", () => {
+
     surprise.classList.add("show");
+
     openBtn.textContent = "Your Surprise Is Opened 💖";
     openBtn.disabled = true;
     openBtn.style.opacity = ".8";
@@ -752,33 +1185,51 @@ openBtn.addEventListener("click", () => {
         block: "start"
     });
 
-    /* Try to start music after a user click.
-       If the browser blocks it, the music button can still be used. */
+    /* Start music after user click */
+
     if (!musicStarted) {
+
         music.play().then(() => {
+
             musicStarted = true;
             updateMusicButton();
+
         }).catch(() => {
+
             updateMusicButton();
+
         });
     }
 });
 
 /* Background music */
+
 function updateMusicButton() {
-    musicBtn.textContent = music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
+
+    musicBtn.textContent = music.paused
+        ? "♫ MUSIC OFF"
+        : "♫ MUSIC ON";
 }
 
 musicBtn.addEventListener("click", async () => {
+
     if (music.paused) {
+
         try {
+
             await music.play();
             musicStarted = true;
+
         } catch (error) {
-            alert("Please check that birthday.mp3 is in the same folder as index.html.");
+
+            alert("Please check that Birthday2.mp3 is in the same folder as index.html.");
+
         }
+
     } else {
+
         music.pause();
+
     }
 
     updateMusicButton();
@@ -788,7 +1239,9 @@ music.addEventListener("play", updateMusicButton);
 music.addEventListener("pause", updateMusicButton);
 
 /* Secret letter */
+
 letterBtn.addEventListener("click", () => {
+
     const isOpen = secretLetter.classList.toggle("open");
 
     letterBtn.textContent = isOpen
@@ -798,6 +1251,7 @@ letterBtn.addEventListener("click", () => {
     letterBtn.setAttribute("aria-expanded", String(isOpen));
 
     if (isOpen) {
+
         secretLetter.scrollIntoView({
             behavior: "smooth",
             block: "center"
@@ -808,6 +1262,7 @@ letterBtn.addEventListener("click", () => {
 });
 
 /* Confetti animation */
+
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 
@@ -815,6 +1270,7 @@ let particles = [];
 let animationFrame = null;
 
 function resizeCanvas() {
+
     const dpr = window.devicePixelRatio || 1;
 
     canvas.width = window.innerWidth * dpr;
@@ -827,22 +1283,41 @@ function resizeCanvas() {
 }
 
 resizeCanvas();
+
 window.addEventListener("resize", resizeCanvas);
 
 function launchConfetti() {
-    const colors = ["#ff72c6", "#ffd1ec", "#c28aff", "#ffffff", "#ffcf70"];
+
+    const colors = [
+        "#ff72c6",
+        "#ffd1ec",
+        "#c28aff",
+        "#ffffff",
+        "#ffcf70"
+    ];
 
     for (let i = 0; i < 130; i++) {
+
         particles.push({
+
             x: Math.random() * window.innerWidth,
+
             y: -20 - Math.random() * window.innerHeight * 0.4,
+
             size: 4 + Math.random() * 6,
+
             speedX: (Math.random() - 0.5) * 4,
+
             speedY: 2 + Math.random() * 5,
+
             rotation: Math.random() * 360,
+
             rotationSpeed: (Math.random() - 0.5) * 10,
+
             color: colors[Math.floor(Math.random() * colors.length)],
+
             life: 150 + Math.random() * 70
+
         });
     }
 
@@ -852,11 +1327,20 @@ function launchConfetti() {
 }
 
 function animateConfetti() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    particles = particles.filter(p => p.life > 0 && p.y < window.innerHeight + 30);
+    ctx.clearRect(
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    particles = particles.filter(
+        p => p.life > 0 && p.y < window.innerHeight + 30
+    );
 
     for (const p of particles) {
+
         p.x += p.speedX;
         p.y += p.speedY;
         p.rotation += p.rotationSpeed;
@@ -864,22 +1348,41 @@ function animateConfetti() {
         p.life--;
 
         ctx.save();
+
         ctx.translate(p.x, p.y);
+
         ctx.rotate(p.rotation * Math.PI / 180);
+
         ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+
+        ctx.fillRect(
+            -p.size / 2,
+            -p.size / 2,
+            p.size,
+            p.size * 0.65
+        );
+
         ctx.restore();
     }
 
     if (particles.length > 0) {
+
         animationFrame = requestAnimationFrame(animateConfetti);
+
     } else {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        ctx.clearRect(
+            0,
+            0,
+            window.innerWidth,
+            window.innerHeight
+        );
+
         animationFrame = null;
     }
 }
+
 </script>
 
 </body>
 </html>
-```
